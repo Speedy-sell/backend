@@ -5,14 +5,21 @@ import { Model } from 'mongoose';
 
 @Injectable()
 export class CatsService {
-  constructor(@InjectModel('Cat') private readonly catModel: Model<Cat>) {}
+  constructor(
+    @InjectModel('Cat')
+    private readonly catModel: Model<Cat>,
+  ) {}
 
-  async create(createCatDto) {
-    const createdCat = new this.catModel(createCatDto);
-    return await createdCat.save();
+  async create(cat) {
+    try {
+      const newCat = new this.catModel(cat);
+      return await newCat.save();
+    } catch (error) {
+      return error;
+    }
   }
 
-  getAllcats() {
-    return 'cats';
+  async getAllcats() {
+    return await this.catModel.find();
   }
 }
