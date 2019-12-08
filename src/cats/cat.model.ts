@@ -1,21 +1,16 @@
 import * as mongoose from 'mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateCatDto {
-  @ApiProperty()
+export interface iCat {
   name: string;
-
-  @ApiProperty()
   age: number;
-
-  @ApiProperty()
   breed: string;
 }
 
-export interface Cat {
-  name: string;
-  age: number;
-  breed: string;
+export class CreateCatDto implements iCat {
+  @ApiProperty() name: string;
+  @ApiProperty() age: number;
+  @ApiProperty() breed: string;
 }
 
 export const CatSchema = new mongoose.Schema({

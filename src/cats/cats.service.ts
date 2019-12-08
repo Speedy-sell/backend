@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Cat } from './cat.model';
+import { iCat } from './cat.model';
 import { Model } from 'mongoose';
 
 @Injectable()
 export class CatsService {
   constructor(
     @InjectModel('Cat')
-    private readonly catModel: Model<Cat>,
+    private readonly catModel: Model<iCat>,
   ) {}
 
   async create(cat) {
