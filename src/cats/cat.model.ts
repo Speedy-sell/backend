@@ -1,4 +1,16 @@
 import * as mongoose from 'mongoose';
+import { ApiProperty } from '@nestjs/swagger';
+
+export class CreateCatDto {
+  @ApiProperty()
+  name: string;
+
+  @ApiProperty()
+  age: number;
+
+  @ApiProperty()
+  breed: string;
+}
 
 export interface Cat {
   name: string;
