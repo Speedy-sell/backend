@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { mongoDBConfig } from '../config/mongodb.config';
-import { CatsModule } from './items/items.module';
+import { ItemsModule } from './items/items.module';
 
 @Module({
   imports: [
     MongooseModule.forRoot(mongoDBConfig.key, { useNewUrlParser: true }),
-    CatsModule,
+    ItemsModule,
   ],
   /**
    * Try not import any controller in the main module

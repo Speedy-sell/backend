@@ -9,12 +9,12 @@ export class ItemsController {
   constructor(private readonly itemsService: ItemsService) {}
 
   @Get('items')
-  getAllcats() {
+  getAll() {
     return this.itemsService.getAll();
   }
 
   @Post('items')
-  savecats(@Body() createitemDTO: CreateItemDTO) {
+  save(@Body() createitemDTO: CreateItemDTO) {
     return this.itemsService.create(createitemDTO);
   }
 }

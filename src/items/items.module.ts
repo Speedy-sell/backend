@@ -16,4 +16,4 @@ import { ItemSchema } from './model/item.model';
   controllers: [ItemsController],
   providers: [ItemsService],
 })
-export class CatsModule {}
+export class ItemsModule {}
