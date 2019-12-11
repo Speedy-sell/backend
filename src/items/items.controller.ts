@@ -10,11 +10,11 @@ export class ItemsController {
 
   @Get('items')
   getAllcats() {
-    return this.itemsService.getAllcats();
+    return this.itemsService.getAll();
   }
 
   @Post('items')
-  savecats(@Body() createCatDto: CreateItemDTO) {
-    return this.itemsService.create(createCatDto);
+  savecats(@Body() createitemDTO: CreateItemDTO) {
+    return this.itemsService.create(createitemDTO);
   }
 }

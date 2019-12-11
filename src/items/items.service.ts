@@ -7,19 +7,19 @@ import { Model } from 'mongoose';
 export class ItemsService {
   constructor(
     @InjectModel('Item')
-    private readonly catModel: Model<iItem>,
+    private readonly itemModel: Model<iItem>,
   ) {}
 
-  async create(cat) {
+  async create(item) {
     try {
-      const newCat = new this.catModel(cat);
-      return await newCat.save();
+      const newItem = new this.itemModel(item);
+      return await newItem.save();
     } catch (error) {
       return error;
     }
   }
 
-  async getAllcats() {
-    return await this.catModel.find();
+  async getAll() {
+    return await this.itemModel.find();
   }
 }
