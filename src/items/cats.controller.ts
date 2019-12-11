@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
-import { CatsService } from './cats.service';
+import { CatsService } from './item.service';
 import { CreateCatDto } from './cat.model';
 import { ApiTags } from '@nestjs/swagger';
 
