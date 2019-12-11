@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { CatsController } from './cats.controller';
+import { CatsController } from './item.controller';
 import { CatsService } from './item.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CatSchema } from './cat.model';
+import { CatSchema } from './item.model';
 
 @Module({
   imports: [
