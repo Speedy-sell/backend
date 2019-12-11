@@ -1,20 +1,20 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
-import { CatsService } from './items.service';
-import { CreateCatDto } from './model/item.model';
+import { ItemsService } from './items.service';
+import { CreateItemDTO } from './model/item.model';
 import { ApiTags } from '@nestjs/swagger';
 
-@ApiTags('Cats')
+@ApiTags('Items')
 @Controller()
-export class CatsController {
-  constructor(private readonly catsService: CatsService) {}
+export class ItemsController {
+  constructor(private readonly itemsService: ItemsService) {}
 
-  @Get('cats')
+  @Get('items')
   getAllcats() {
-    return this.catsService.getAllcats();
+    return this.itemsService.getAllcats();
   }
 
-  @Post('cats')
-  savecats(@Body() createCatDto: CreateCatDto) {
-    return this.catsService.create(createCatDto);
+  @Post('items')
+  savecats(@Body() createCatDto: CreateItemDTO) {
+    return this.itemsService.create(createCatDto);
   }
 }

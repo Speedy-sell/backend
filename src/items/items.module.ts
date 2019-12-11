@@ -1,19 +1,19 @@
 import { Module } from '@nestjs/common';
-import { CatsController } from './items.controller';
-import { CatsService } from './items.service';
+import { ItemsController } from './items.controller';
+import { ItemsService } from './items.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CatSchema } from './model/item.model';
+import { ItemSchema } from './model/item.model';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
       {
         name: 'Item', // Has to be a capital letter `C`
-        schema: CatSchema,
+        schema: ItemSchema,
       },
     ]),
   ],
-  controllers: [CatsController],
-  providers: [CatsService],
+  controllers: [ItemsController],
+  providers: [ItemsService],
 })
 export class CatsModule {}
