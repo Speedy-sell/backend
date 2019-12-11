@@ -6,7 +6,7 @@ import { Model } from 'mongoose';
 @Injectable()
 export class CatsService {
   constructor(
-    @InjectModel('Cat')
+    @InjectModel('Item')
     private readonly catModel: Model<iCat>,
   ) {}
 

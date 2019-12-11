@@ -8,7 +8,7 @@ import { CatSchema } from './item.model';
   imports: [
     MongooseModule.forFeature([
       {
-        name: 'Cat', // Has to be a capital letter `C`
+        name: 'Item', // Has to be a capital letter `C`
         schema: CatSchema,
       },
     ]),
