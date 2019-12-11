@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { CatsController } from './item.controller';
 import { CatsService } from './item.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CatSchema } from './item.model';
+import { CatSchema } from './model/item.model';
 
 @Module({
   imports: [
