@@ -11,6 +11,11 @@ import { CreateItemDTO } from './model/item.model';
 import { ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 
+const vision = require('@google-cloud/vision');
+const client = new vision.ImageAnnotatorClient({
+  keyFilename: 'config/google-cloud-vision.json',
+});
+
 @ApiTags('Items')
 @Controller()
 export class ItemsController {
@@ -28,8 +33,17 @@ export class ItemsController {
 
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
-  uploadFile(@UploadedFile() file) {
+  async uploadFile(@UploadedFile() file) {
     console.log(file);
-    return 'hey';
+    const path = 'src/resources/orange.jpg';
+
+    // try {
+    //   const results = await client.labelDetection(path);
+    //   return results;
+    // } catch (err) {
+    //   console.error('ERROR:', err);
+    // }
+
+    // return path;
   }
 }
