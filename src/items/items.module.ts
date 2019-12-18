@@ -8,7 +8,7 @@ import { ItemSchema } from './model/item.model';
   imports: [
     MongooseModule.forFeature([
       {
-        name: 'Item', // Has to be a capital letter `C`
+        name: 'Item', // Collection Name: has to match exactly with the database including the case
         schema: ItemSchema,
       },
     ]),
