@@ -35,3 +35,6 @@ lerna-debug.log*
 
 # Google Cloud Key
 config/google-cloud-vision.json
+
+#uploads
+uploads/*
