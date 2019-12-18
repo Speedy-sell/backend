@@ -1,8 +1,9 @@
-const name = `Nechar`;
-const password = `6rrjC4wKBeUlAY6b`;
-const collectionName = 'OpenSourceCollection';
+const userName = `Nechar`;
+const password = `Rp9HiIAAIIf45wTF`;
+const collectionName = 'RootDB';
+const clusterName = 'cluster0-sumzs';
 const extraParams = 'retryWrites=true&w=majority';
 
 export const mongoDBConfig = {
-  key: `mongodb+srv://Nechar:6rrjC4wKBeUlAY6b@opensourcecluster-hv03t.mongodb.net/test?retryWrites=true&w=majority`,
+  key: `mongodb+srv://${userName}:${password}@${clusterName}.mongodb.net/${collectionName}?${extraParams}`,
 };
