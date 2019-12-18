@@ -34,16 +34,15 @@ export class ItemsController {
   @Post('upload')
   @UseInterceptors(FileInterceptor('file', { dest: 'uploads/' }))
   async uploadFile(@UploadedFile() file) {
-    console.log(file);
-    // const path = 'src/resources/orange.jpg';
+    // todo: save the image details
+    // Eg: file name, type, size, etc.
     const path = file.path;
-
-    // try {
-    //   const results = await client.labelDetection(path);
-    //   return results;
-    // } catch (err) {
-    //   // tslint:disable-next-line: no-console
-    //   console.error('ERROR:', err);
-    // }
+    try {
+      const results = await client.labelDetection(path);
+      return results;
+    } catch (err) {
+      // tslint:disable-next-line: no-console
+      console.error('Unable to fetch the label of the image', err);
+    }
   }
 }
