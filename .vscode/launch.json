@@ -13,7 +13,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug Nest Framework",
+      "name": "Debug Nest Framework- No watch mode",
       "args": ["${workspaceFolder}/src/main.ts"],
       "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
       "sourceMaps": true,
