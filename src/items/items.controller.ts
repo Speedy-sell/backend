@@ -32,18 +32,18 @@ export class ItemsController {
   }
 
   @Post('upload')
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(FileInterceptor('file', { dest: 'uploads/' }))
   async uploadFile(@UploadedFile() file) {
     console.log(file);
-    const path = 'src/resources/orange.jpg';
+    // const path = 'src/resources/orange.jpg';
+    const path = file.path;
 
     // try {
     //   const results = await client.labelDetection(path);
     //   return results;
     // } catch (err) {
+    //   // tslint:disable-next-line: no-console
     //   console.error('ERROR:', err);
     // }
-
-    // return path;
   }
 }
