@@ -1,13 +1,14 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { setupSwagger } from './setup/swagger';
+import { Swagger } from '../config/swagger';
 
 const portNumber = 3000;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  setupSwagger(app);
-  console.info(`Application running on http://localhost:${portNumber}/`);
+  Swagger.init(app);
+  // tslint:disable-next-line: no-console
+  console.info(`API running on http://localhost:${portNumber}/api`);
   await app.listen(portNumber);
 }
 
