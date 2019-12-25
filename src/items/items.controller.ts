@@ -7,7 +7,7 @@ import {
   UploadedFile,
 } from '@nestjs/common';
 import { ItemsService } from './items.service';
-import { CreateItemDTO } from '../models/item/item.model';
+import { CreateItemDTO } from '../../models/item/item.model';
 import { ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 
@@ -27,8 +27,8 @@ export class ItemsController {
   }
 
   @Post('items')
-  save(@Body() createitemDTO: CreateItemDTO) {
-    return this.itemsService.create(createitemDTO);
+  save(@Body() createItemDTO: CreateItemDTO) {
+    return this.itemsService.create(createItemDTO);
   }
 
   @Post('upload')
