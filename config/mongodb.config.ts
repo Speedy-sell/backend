@@ -5,6 +5,12 @@ export const mongoDBConfig = {
     useCreateIndex: true,
     useUnifiedTopology: true,
   },
+  /**
+   * Why are we using these `options`?
+   * Because if we didn't, the console keeps
+   * complaining that we didn't use these options.
+   * However, these options are optional
+   */
 };
 
 function getRemoteKey() {
