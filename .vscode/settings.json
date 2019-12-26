@@ -5,6 +5,9 @@
     "statusBar.background": "#220000"
   },
   "cSpell.words": [
-    "nestjs"
+    "fieldname",
+    "mimetype",
+    "nestjs",
+    "originalname"
   ]
 }

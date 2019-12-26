@@ -6,3 +6,13 @@ export interface Item extends Document {
   qty: string;
   rate: number;
 }
+export interface FileProperties {
+  fieldname: string;
+  originalname: string;
+  encoding: string;
+  mimetype: string;
+  destination: string;
+  filename: string;
+  path: string;
+  size: number;
+}
