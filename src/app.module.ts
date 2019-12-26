@@ -6,7 +6,7 @@ import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(mongoDBConfig.key, { useNewUrlParser: true }),
+    MongooseModule.forRoot(mongoDBConfig.key, mongoDBConfig.options),
     ItemsModule,
     UsersModule,
   ],

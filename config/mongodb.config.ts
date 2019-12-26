@@ -6,4 +6,9 @@ const extraParams = 'retryWrites=true&w=majority';
 
 export const mongoDBConfig = {
   key: `mongodb+srv://${userName}:${password}@${clusterName}.mongodb.net/${collectionName}?${extraParams}`,
+  options: {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  },
 };
