@@ -10,9 +10,9 @@ import { ItemsService } from './items.service';
 import { CreateItemDTO } from '../../models/item/item.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { ImageAnnotatorClient } from '@google-cloud/vision';
 
-const vision = require('@google-cloud/vision');
-const client = new vision.ImageAnnotatorClient({
+const client = new ImageAnnotatorClient({
   keyFilename: 'config/google-cloud-vision.json',
 });
 
