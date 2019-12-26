@@ -1,7 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { iItem } from '../../models/item/item.model';
 import { Model } from 'mongoose';
+
+import { iItem } from '../../models/item/item.interface';
+import { CreateItemDTO } from 'models/item/item.dto';
 
 @Injectable()
 export class ItemsService {
@@ -10,7 +12,7 @@ export class ItemsService {
     private readonly itemModel: Model<iItem>,
   ) {}
 
-  async create(item) {
+  async create(item: CreateItemDTO) {
     try {
       const newItem = new this.itemModel(item);
       return await newItem.save();

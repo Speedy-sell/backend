@@ -7,7 +7,7 @@ import {
   UploadedFile,
 } from '@nestjs/common';
 import { ItemsService } from './items.service';
-import { CreateItemDTO } from '../../models/item/item.model';
+import { CreateItemDTO } from '../../models/item/item.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 
