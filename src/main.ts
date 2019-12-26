@@ -7,8 +7,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const swagger = new Swagger(app);
   swagger.build();
-
   await app.listen(config.portNumber);
+  swagger.log();
 }
 
 bootstrap();

@@ -14,7 +14,6 @@ export class Swagger {
 
   build() {
     SwaggerModule.setup(this.docURL, this.app, this.document);
-    this.log();
   }
 
   log() {
