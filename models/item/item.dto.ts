@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { iItem } from './item.interface';
+import { Item } from './item.interface';
 
-export class CreateItemDTO implements iItem {
+export class CreateItemDTO implements Item {
   @ApiProperty() name: string;
   @ApiProperty() age: number;
   @ApiProperty() breed: string;

@@ -2,14 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
-import { iItem } from '../../models/item/item.interface';
+import { Item } from '../../models/item/item.interface';
 import { CreateItemDTO } from 'models/item/item.dto';
 
 @Injectable()
 export class ItemsService {
   constructor(
     @InjectModel('Item')
-    private readonly itemModel: Model<iItem>,
+    private readonly itemModel: Model<Item>,
   ) {}
 
   async create(item: CreateItemDTO) {
