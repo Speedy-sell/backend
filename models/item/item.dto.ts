@@ -1,7 +1,7 @@
 // tslint:disable: max-classes-per-file
 
 import { ApiProperty } from '@nestjs/swagger';
-import { Item, FileProperties } from './item.interface';
+import { Item, FileProperties } from './index';
 
 export class CreateItemDTO implements Item {
   @ApiProperty() code: string;

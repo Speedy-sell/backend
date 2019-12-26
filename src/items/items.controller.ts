@@ -7,12 +7,14 @@ import {
   UploadedFile,
 } from '@nestjs/common';
 import { ItemsService } from './items.service';
-import { CreateItemDTO, FileUploadDto } from '../../models/item/item.dto';
+import {
+  CreateItemDTO,
+  FileUploadDto,
+  FileProperties,
+} from '../../models/item';
 import { ApiTags, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ImageAnnotatorClient } from '@google-cloud/vision';
-import { FileProperties } from '../../models/item/item.interface';
-
 const client = new ImageAnnotatorClient({
   keyFilename: 'config/google-cloud-vision.json',
 });
