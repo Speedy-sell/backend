@@ -12,6 +12,7 @@ import {
   CreateItemDTO,
   ImageProperties,
   UpdateItemDTO,
+  Item,
 } from '../../models/item';
 import { ApiTags, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -29,13 +30,10 @@ export class ItemsController {
   @UseInterceptors(FileInterceptor('image', { dest: 'uploads/' }))
   @ApiConsumes('multipart/form-data')
   @ApiBody({ type: CreateItemDTO })
-  async uploadFile(@Body() body, @UploadedFile() image: ImageProperties) {
+  async uploadFile(@Body() body: Item, @UploadedFile() image: ImageProperties) {
     const { itemCode } = body;
-    console.log('{ itemCode, image }', { itemCode, image });
-
     return this.itemsService.create({ itemCode, image });
-    // todo: save the image details
-    // Eg: file name, type, size, etc.
+    // todo: save the image labels
     // const path = file.path;
     // try {
     //   const results = await client.labelDetection(path);
