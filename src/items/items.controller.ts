@@ -24,16 +24,6 @@ const client = new ImageAnnotatorClient({
 export class ItemsController {
   constructor(private readonly itemsService: ItemsService) {}
 
-  @Get('items')
-  getAll() {
-    return this.itemsService.getAll();
-  }
-
-  @Post('items')
-  save(@Body() createItemDTO: CreateItemDTO) {
-    return this.itemsService.create(createItemDTO);
-  }
-
   @Post('upload')
   @UseInterceptors(FileInterceptor('file', { dest: 'uploads/' }))
   @ApiConsumes('multipart/form-data')
@@ -49,5 +39,15 @@ export class ItemsController {
       // tslint:disable-next-line: no-console
       console.error('Unable to fetch the label of the image', err);
     }
+  }
+
+  @Post('items')
+  save(@Body() createItemDTO: CreateItemDTO) {
+    return this.itemsService.create(createItemDTO);
+  }
+
+  @Get('items')
+  getAll() {
+    return this.itemsService.getAll();
   }
 }
