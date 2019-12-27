@@ -6,4 +6,5 @@ export const ItemSchema = new Schema({
   qty: { type: Number },
   rate: { type: Number },
   image: { type: Object },
+  tags: { type: Object },
 });

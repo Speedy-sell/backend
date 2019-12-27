@@ -13,11 +13,14 @@ import {
   ImageProperties,
   UpdateItemDTO,
   Item,
+  ImageAnnotatorResult,
+  LabelAnnotation,
 } from '../../models/item';
 import { ApiTags, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ImageAnnotatorClient } from '@google-cloud/vision';
-const client = new ImageAnnotatorClient({
+
+const imageAnnotatorClient = new ImageAnnotatorClient({
   keyFilename: 'config/google-cloud-vision.json',
 });
 
@@ -32,16 +35,26 @@ export class ItemsController {
   @ApiBody({ type: CreateItemDTO })
   async uploadFile(@Body() body: Item, @UploadedFile() image: ImageProperties) {
     const { itemCode } = body;
-    return this.itemsService.create({ itemCode, image });
     // todo: save the image labels
-    // const path = file.path;
-    // try {
-    //   const results = await client.labelDetection(path);
-    //   return results;
-    // } catch (err) {
-    //   // tslint:disable-next-line: no-console
-    //   console.error('Unable to fetch the label of the image', err);
-    // }
+    try {
+      const results: ImageAnnotatorResult[] = await imageAnnotatorClient.labelDetection(
+        image.path,
+      );
+      const tags = this.getLabelAnnotationsDescriptions(
+        results[0].labelAnnotations,
+      );
+      return this.itemsService.create({ itemCode, image, tags });
+    } catch (err) {
+      return err;
+    }
+  }
+
+  getLabelAnnotationsDescriptions(
+    labelAnnotations: LabelAnnotation[],
+  ): string[] {
+    return labelAnnotations.map(
+      (labelAnnotation) => labelAnnotation.description,
+    );
   }
 
   @Put('items')

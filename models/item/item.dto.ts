@@ -6,6 +6,7 @@ import { Item, ImageProperties } from './index';
 export class CreateItemDTO {
   @ApiProperty({ type: 'string', format: 'binary' }) image: ImageProperties;
   @ApiProperty() itemCode: string;
+  tags: string[];
 }
 
 export class UpdateItemDTO implements Item {
