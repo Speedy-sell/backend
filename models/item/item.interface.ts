@@ -6,7 +6,7 @@ export interface Item extends Document {
   qty: string;
   rate: number;
 }
-export interface FileProperties {
+export interface ImageProperties {
   fieldname: string;
   originalname: string;
   encoding: string;

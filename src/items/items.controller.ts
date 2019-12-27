@@ -9,8 +9,8 @@ import {
 import { ItemsService } from './items.service';
 import {
   CreateItemDTO,
-  FileUploadDto,
-  FileProperties,
+  ImageUploadDTO,
+  ImageProperties,
 } from '../../models/item';
 import { ApiTags, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -37,8 +37,8 @@ export class ItemsController {
   @Post('upload')
   @UseInterceptors(FileInterceptor('file', { dest: 'uploads/' }))
   @ApiConsumes('multipart/form-data')
-  @ApiBody({ type: FileUploadDto })
-  async uploadFile(@Body() body, @UploadedFile() file: FileProperties) {
+  @ApiBody({ type: ImageUploadDTO })
+  async uploadFile(@Body() body, @UploadedFile() file: ImageProperties) {
     // todo: save the image details
     // Eg: file name, type, size, etc.
     const path = file.path;
