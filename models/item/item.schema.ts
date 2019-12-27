@@ -1,8 +1,9 @@
 import { Schema } from 'mongoose';
 
 export const ItemSchema = new Schema({
-  code: { type: String, required: true, unique: true },
-  name: { type: String, required: true },
-  qty: { type: Number, required: true },
-  rate: { type: Number, required: true },
+  itemCode: { type: String, required: true, unique: true },
+  name: { type: String, required: false },
+  qty: { type: Number, required: false },
+  rate: { type: Number, required: false },
+  image: { type: Object, required: false },
 });

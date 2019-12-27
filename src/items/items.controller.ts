@@ -5,12 +5,13 @@ import {
   Body,
   UseInterceptors,
   UploadedFile,
+  Put,
 } from '@nestjs/common';
 import { ItemsService } from './items.service';
 import {
   CreateItemDTO,
-  ImageUploadDTO,
   ImageProperties,
+  UpdateItemDTO,
 } from '../../models/item';
 import { ApiTags, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -24,26 +25,31 @@ const client = new ImageAnnotatorClient({
 export class ItemsController {
   constructor(private readonly itemsService: ItemsService) {}
 
-  @Post('upload')
-  @UseInterceptors(FileInterceptor('file', { dest: 'uploads/' }))
+  @Post('image')
+  @UseInterceptors(FileInterceptor('image', { dest: 'uploads/' }))
   @ApiConsumes('multipart/form-data')
-  @ApiBody({ type: ImageUploadDTO })
-  async uploadFile(@Body() body, @UploadedFile() file: ImageProperties) {
+  @ApiBody({ type: CreateItemDTO })
+  async uploadFile(@Body() body, @UploadedFile() image: ImageProperties) {
+    const { itemCode } = body;
+    console.log('{ itemCode, image }', { itemCode, image });
+
+    return this.itemsService.create({ itemCode, image });
     // todo: save the image details
     // Eg: file name, type, size, etc.
-    const path = file.path;
-    try {
-      const results = await client.labelDetection(path);
-      return results;
-    } catch (err) {
-      // tslint:disable-next-line: no-console
-      console.error('Unable to fetch the label of the image', err);
-    }
+    // const path = file.path;
+    // try {
+    //   const results = await client.labelDetection(path);
+    //   return results;
+    // } catch (err) {
+    //   // tslint:disable-next-line: no-console
+    //   console.error('Unable to fetch the label of the image', err);
+    // }
   }
 
-  @Post('items')
-  save(@Body() createItemDTO: CreateItemDTO) {
-    return this.itemsService.create(createItemDTO);
+  @Put('items')
+  save(@Body() updateItemDTO: UpdateItemDTO) {
+    console.log('update', updateItemDTO);
+    // return this.itemsService.create(updateItemDTO);
   }
 
   @Get('items')
