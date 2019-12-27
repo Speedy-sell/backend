@@ -6,7 +6,7 @@ import { Item, ImageProperties } from './index';
 export class CreateItemDTO implements Item {
   @ApiProperty() code: string;
   @ApiProperty() name: string;
-  @ApiProperty() qty: string;
+  @ApiProperty() qty: number;
   @ApiProperty() rate: number;
 }
 export class ImageUploadDTO {
