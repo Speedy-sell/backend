@@ -19,6 +19,7 @@ import {
 import { ApiTags, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ImageAnnotatorClient } from '@google-cloud/vision';
+import { storage, imageFieldName } from 'src/utils/image-upload';
 
 const imageAnnotatorClient = new ImageAnnotatorClient({
   keyFilename: 'config/google-cloud-vision.json',
@@ -29,13 +30,12 @@ const imageAnnotatorClient = new ImageAnnotatorClient({
 export class ItemsController {
   constructor(private readonly itemsService: ItemsService) {}
 
-  @Post('image')
-  @UseInterceptors(FileInterceptor('image', { dest: 'uploads/' }))
+  @Post('item') // API Path
+  @UseInterceptors(FileInterceptor(imageFieldName, { storage }))
   @ApiConsumes('multipart/form-data')
   @ApiBody({ type: CreateItemDTO })
   async uploadFile(@Body() body: Item, @UploadedFile() image: ImageProperties) {
     const { itemCode } = body;
-    // todo: save the image labels
     try {
       const results: ImageAnnotatorResult[] = await imageAnnotatorClient.labelDetection(
         image.path,
