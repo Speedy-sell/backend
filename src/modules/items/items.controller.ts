@@ -17,12 +17,15 @@ import {
 import { ApiTags, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { storage, imageFieldName } from 'src/utils/image-upload';
-import { getTags } from 'src/utils/image-recognition';
+import { ImageRecognitionService } from 'src/services/image-recognition/image-recognition.service';
 
 @ApiTags('Items')
 @Controller()
 export class ItemsController {
-  constructor(private readonly itemsService: ItemsService) {}
+  constructor(
+    private readonly itemsService: ItemsService,
+    private imageRecognitionService: ImageRecognitionService,
+  ) {}
 
   @Post('item') // API Path
   @UseInterceptors(FileInterceptor(imageFieldName, { storage }))
@@ -31,7 +34,7 @@ export class ItemsController {
   async uploadFile(@Body() body: Item, @UploadedFile() image: ImageProperties) {
     const { itemCode } = body;
     try {
-      const tags = await getTags(image.path);
+      const tags = await this.imageRecognitionService.getTags(image.path);
       return this.itemsService.create({ itemCode, image, tags });
     } catch (err) {
       return err;
@@ -40,6 +43,7 @@ export class ItemsController {
 
   @Put('items')
   save(@Body() updateItemDTO: UpdateItemDTO) {
+    // tslint:disable-next-line: no-console
     console.log('update', updateItemDTO);
     // return this.itemsService.create(updateItemDTO);
   }

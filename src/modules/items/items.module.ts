@@ -3,6 +3,7 @@ import { ItemsController } from './items.controller';
 import { ItemsService } from './items.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ItemSchema } from '../../models/item';
+import { ImageRecognitionService } from '../../services/image-recognition/image-recognition.service';
 
 @Module({
   imports: [
@@ -14,6 +15,6 @@ import { ItemSchema } from '../../models/item';
     ]),
   ],
   controllers: [ItemsController],
-  providers: [ItemsService],
+  providers: [ItemsService, ImageRecognitionService],
 })
 export class ItemsModule {}
