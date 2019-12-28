@@ -13,17 +13,11 @@ import {
   ImageProperties,
   UpdateItemDTO,
   Item,
-  ImageAnnotatorResult,
-  LabelAnnotation,
 } from '../../models/item';
 import { ApiTags, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { ImageAnnotatorClient } from '@google-cloud/vision';
 import { storage, imageFieldName } from 'src/utils/image-upload';
-
-const imageAnnotatorClient = new ImageAnnotatorClient({
-  keyFilename: 'config/google-cloud-vision.json',
-});
+import { getTags } from 'src/utils/image-recognition';
 
 @ApiTags('Items')
 @Controller()
@@ -37,24 +31,11 @@ export class ItemsController {
   async uploadFile(@Body() body: Item, @UploadedFile() image: ImageProperties) {
     const { itemCode } = body;
     try {
-      const results: ImageAnnotatorResult[] = await imageAnnotatorClient.labelDetection(
-        image.path,
-      );
-      const tags = this.getLabelAnnotationsDescriptions(
-        results[0].labelAnnotations,
-      );
+      const tags = await getTags(image.path);
       return this.itemsService.create({ itemCode, image, tags });
     } catch (err) {
       return err;
     }
-  }
-
-  getLabelAnnotationsDescriptions(
-    labelAnnotations: LabelAnnotation[],
-  ): string[] {
-    return labelAnnotations.map(
-      (labelAnnotation) => labelAnnotation.description,
-    );
   }
 
   @Put('items')
