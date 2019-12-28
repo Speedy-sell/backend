@@ -1,12 +1,12 @@
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { config } from './app.config';
+import { config } from '../../config/app.config';
 
 export class Swagger {
   public docURL = ''; // Eg: `docs`
   private options = new DocumentBuilder()
-    .setTitle('Speedy Sell')
-    .setDescription('Buying and selling on steroids')
-    .setVersion('1.0')
+    .setTitle(config.name)
+    .setDescription(config.description)
+    .setVersion(config.version)
     .build();
   private document = SwaggerModule.createDocument(this.app, this.options);
 
