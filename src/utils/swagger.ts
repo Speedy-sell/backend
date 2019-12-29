@@ -9,12 +9,12 @@ export class Swagger {
     .setDescription(config.description)
     .setVersion(config.version)
     .build();
-  private document = SwaggerModule.createDocument(this.app, this.options);
 
   constructor(private app) {}
 
   build() {
-    SwaggerModule.setup(this.docURL, this.app, this.document);
+    const document = SwaggerModule.createDocument(this.app, this.options);
+    SwaggerModule.setup(this.docURL, this.app, document);
   }
 
   log() {

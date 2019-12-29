@@ -5,13 +5,13 @@ export const imageFieldName = 'image';
 
 export const storage = diskStorage({
   destination: './uploads',
-  filename: (req, file, callback) => {
+  filename: (request, file, callback) => {
     callback(null, generateFilename(file));
   },
 });
 
 function generateFilename(file) {
-  return `${Date.now()}-${getRandomString()}${extname(file.originalname)}`;
+  return `${Date.now()}-${getRandomString() + extname(file.originalname)}`;
 }
 
 function getRandomString() {
