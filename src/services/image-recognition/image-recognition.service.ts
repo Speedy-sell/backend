@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ImageAnnotatorClient } from '@google-cloud/vision';
 
 import { ImageAnnotatorResult, LabelAnnotation } from '../../models/item';
+import { config } from 'config/app.config';
 
 @Injectable()
 export class ImageRecognitionService {
@@ -13,8 +14,8 @@ export class ImageRecognitionService {
     });
   }
 
-  async getTags(imagePath, sendFake: 'fake' | null = null) {
-    if (sendFake === 'fake') {
+  async getTags(imagePath) {
+    if (config.enableMockResponse) {
       return ['Furniture', 'Electronic', 'Toys', 'Food'];
     }
     try {

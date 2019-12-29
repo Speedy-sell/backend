@@ -3,4 +3,5 @@ export const config = {
   name: 'Speedy Sell',
   description: 'Buying and selling on steroids',
   version: 'Alpha',
+  enableMockResponse: true,
 };
