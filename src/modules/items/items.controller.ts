@@ -34,8 +34,11 @@ export class ItemsController {
   async uploadFile(@Body() body: Item, @UploadedFile() image: ImageProperties) {
     const { itemCode } = body;
     try {
-      const tags = await this.imageRecognitionService.getTags(image.path);
-      return this.itemsService.create({ itemCode, image, tags });
+      const tags = await this.imageRecognitionService.getTags(
+        image.path,
+        'fake',
+      );
+      return await this.itemsService.create({ itemCode, image, tags });
     } catch (err) {
       return err;
     }

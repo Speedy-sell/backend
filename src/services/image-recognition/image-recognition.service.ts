@@ -13,7 +13,10 @@ export class ImageRecognitionService {
     });
   }
 
-  async getTags(imagePath) {
+  async getTags(imagePath, sendFake: 'fake' | null = null) {
+    if (sendFake === 'fake') {
+      return ['Furniture', 'Electronic', 'Toys', 'Food'];
+    }
     try {
       const response: ImageAnnotatorResult[] = await this.imageAnnotatorClient.labelDetection(
         imagePath,
