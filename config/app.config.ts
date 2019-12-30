@@ -1,7 +1,7 @@
 export const config = {
   portNumber: 3000,
-  name: 'Speedy Sell',
-  description: 'Buying and selling on steroids',
-  version: 'Alpha',
+  name: 'Resimac Loan Api 1.0',
+  description: '/aresapi/swagger/v1/swagger.json',
+  version: 'v1',
   enableMockResponse: true,
 };
