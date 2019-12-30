@@ -20,7 +20,7 @@ export class UserController {
   async login(@Request() req, @Body() _body: LoginUserDTO) {
     const { user } = req;
     /**
-     * Where did this `user` property come from?
+     * Where did the property `user` come from?
      * Thanks to the decorator `@UseGuard(AuthGuard('local'))`
      * It is a middleware which would add a property called `user` into
      * the request object if the user was found
