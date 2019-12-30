@@ -16,8 +16,8 @@ import {
 } from '../../models/item';
 import { ApiTags, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { storage, imageFieldName } from 'src/utils/image-upload';
-import { ImageRecognitionService } from 'src/services/image-recognition/image-recognition.service';
+import { storage, imageFieldName } from '../../utils/image-upload';
+import { ImageRecognitionService } from '../../services/image-recognition/image-recognition.service';
 
 @ApiTags('Items')
 @Controller()
