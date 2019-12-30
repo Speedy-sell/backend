@@ -16,7 +16,8 @@ export class UserController {
 
   @UseGuards(AuthGuard('local'))
   @Post('auth/login')
-  async login(@Request() req, @Body() body: LoginUserDTO) {
+  // tslint:disable-next-line: variable-name
+  async login(@Request() req, @Body() _body: LoginUserDTO) {
     const { user } = req;
     /**
      * Where did this `user` property come from?
