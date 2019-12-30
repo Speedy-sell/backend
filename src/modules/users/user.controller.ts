@@ -23,7 +23,8 @@ export class UserController {
      * Where did the property `user` come from?
      * Thanks to the decorator `@UseGuard(AuthGuard('local'))`
      * It is a middleware which would add a property called `user` into
-     * the request object if the user was found
+     * the user was found along with the associated email and password of
+     * the request
      */
     return this.authService.login(user);
   }
