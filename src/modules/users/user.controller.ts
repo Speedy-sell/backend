@@ -47,6 +47,7 @@ export class UserController {
 
   @Post('register')
   async register(@Body() body: RegisterUserDTO) {
+    // TODO encrypt the password before saving it into the database
     return await this.usersService.create(body);
   }
 }
