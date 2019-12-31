@@ -10,6 +10,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth/auth.service';
 import { LoginUserDTO, RegisterUserDTO } from '../../models';
 import { UsersService } from './users.service';
+import { encrypt } from '../../utils/security';
 
 @Controller()
 export class UserController {
@@ -47,7 +48,7 @@ export class UserController {
 
   @Post('register')
   async register(@Body() body: RegisterUserDTO) {
-    // TODO encrypt the password before saving it into the database
+    body.password = encrypt(body.password);
     return await this.usersService.create(body);
   }
 }
