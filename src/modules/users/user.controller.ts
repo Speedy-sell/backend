@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth/auth.service';
-import { LoginUserDTO } from '../../models/user/user.dto';
+import { LoginUserDTO, RegisterUserDTO } from '../../models/user/user.dto';
 
 @Controller()
 export class UserController {
@@ -32,5 +32,10 @@ export class UserController {
   @Get('profile')
   getProfile(@Request() req) {
     return req.user;
+  }
+
+  @Post('register')
+  register(@Body() body: RegisterUserDTO) {
+    return body;
   }
 }
