@@ -9,7 +9,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './auth/constants';
 import { UserController } from './user.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { UserSchema } from '../../models/user';
+import { UserSchema } from '../../models';
 import { mongoDBConfig } from '../../../config/mongodb.config';
 
 @Module({

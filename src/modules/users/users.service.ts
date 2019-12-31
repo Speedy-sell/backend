@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { User, RegisterUserDTO } from '../../models/user';
+import { User, RegisterUserDTO } from '../../models';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { mongoDBConfig } from '../../../config/mongodb.config';

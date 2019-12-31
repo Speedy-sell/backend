@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ImageAnnotatorClient } from '@google-cloud/vision';
 
-import { ImageAnnotatorResult, LabelAnnotation } from '../../models/item';
+import { ImageAnnotatorResult, LabelAnnotation } from '../../models';
 import { config } from '../../../config/app.config';
 
 @Injectable()

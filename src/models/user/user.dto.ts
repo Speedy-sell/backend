@@ -1,7 +1,7 @@
 // tslint:disable: max-classes-per-file
 
 import { ApiProperty } from '@nestjs/swagger';
-import { User } from './index';
+import { User } from './user.interface';
 
 export class RegisterUserDTO implements Partial<User> {
   @ApiProperty() email: string;
