@@ -35,7 +35,14 @@ export class UserController {
   @UseGuards(AuthGuard('jwt'))
   @Get('profile')
   getProfile(@Request() req) {
-    return req.user;
+    const { user } = req;
+    /**
+     * Where did the property `user` come from?
+     * Thanks to the decorator `@UseGuards(AuthGuard('jwt'))`
+     * The middleware validates the token that was passed then
+     * returns the associated `user` information into `req.user` property.
+     */
+    return user;
   }
 
   @Post('register')
