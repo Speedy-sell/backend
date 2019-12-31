@@ -11,6 +11,10 @@ export const mongoDBConfig = {
    * complaining that we didn't use these options.
    * However, these options are optional
    */
+  collectionName: {
+    user: 'User',
+    item: 'Item',
+  },
 };
 
 function getRemoteKey() {

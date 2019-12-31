@@ -10,6 +10,7 @@ import { jwtConstants } from './auth/constants';
 import { UserController } from './user.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserSchema } from '../../models/user';
+import { mongoDBConfig } from '../../../config/mongodb.config';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { UserSchema } from '../../models/user';
     }),
     MongooseModule.forFeature([
       {
-        name: 'User', // Collection Name: has to match exactly with the database including the case
+        name: mongoDBConfig.collectionName.user,
         schema: UserSchema,
       },
     ]),
