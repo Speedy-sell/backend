@@ -8,6 +8,8 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './auth/constants';
 import { UserController } from './user.controller';
+import { MongooseModule } from '@nestjs/mongoose';
+import { UserSchema } from '../../models/user';
 
 @Module({
   imports: [
@@ -17,6 +19,12 @@ import { UserController } from './user.controller';
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '12h' },
     }),
+    MongooseModule.forFeature([
+      {
+        name: 'User', // Collection Name: has to match exactly with the database including the case
+        schema: UserSchema,
+      },
+    ]),
   ],
   controllers: [UserController],
   providers: [UsersService, AuthService, LocalStrategy, JwtStrategy],

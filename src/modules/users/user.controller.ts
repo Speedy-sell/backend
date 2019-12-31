@@ -9,10 +9,14 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth/auth.service';
 import { LoginUserDTO, RegisterUserDTO } from '../../models/user/user.dto';
+import { UsersService } from './users.service';
 
 @Controller()
 export class UserController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly usersService: UsersService,
+  ) {}
 
   @UseGuards(AuthGuard('local'))
   @Post('auth/login')
@@ -35,7 +39,7 @@ export class UserController {
   }
 
   @Post('register')
-  register(@Body() body: RegisterUserDTO) {
-    return body;
+  async register(@Body() body: RegisterUserDTO) {
+    return await this.usersService.create(body);
   }
 }
