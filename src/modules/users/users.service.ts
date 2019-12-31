@@ -5,8 +5,6 @@ import { Model } from 'mongoose';
 
 @Injectable()
 export class UsersService {
-  private readonly users: User[];
-
   constructor(
     @InjectModel('User')
     private readonly userModel: Model<User>,
