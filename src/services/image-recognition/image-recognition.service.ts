@@ -19,6 +19,7 @@ export class ImageRecognitionService {
     if (config.enableMockResponse) {
       return ['Furniture', 'Electronic', 'Toys', 'Food'];
     }
+    /** Real response */
     try {
       const response: ImageAnnotatorResult[] = await this.imageAnnotatorClient.labelDetection(
         imagePath,
