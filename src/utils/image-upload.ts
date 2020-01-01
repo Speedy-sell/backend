@@ -1,5 +1,6 @@
 import { diskStorage } from 'multer';
 import { extname } from 'path';
+import { getRandomString } from './string';
 
 export const imageFieldName = 'image';
 
@@ -13,10 +14,4 @@ export const storage = diskStorage({
 
 function generateFilename(file) {
   return `${Date.now()}-${getRandomString() + extname(file.originalname)}`;
-}
-
-function getRandomString() {
-  return Math.random()
-    .toString(36)
-    .substring(7);
 }
