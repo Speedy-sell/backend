@@ -17,7 +17,13 @@ export class ImageRecognitionService {
   async getTags(imagePath) {
     /** Mock response */
     if (config.enableMockResponse) {
-      return ['Furniture', 'Electronic', 'Toys', 'Food'];
+      return [
+        'Furniture',
+        'Electronic',
+        'Toys',
+        'Food',
+        'This is a mock response, please set `enableMockResponse` to `false` in the config file to disable',
+      ];
     }
     /** Real response */
     try {
