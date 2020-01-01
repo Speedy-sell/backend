@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { UsersService } from './users.service';
+import { EmailService } from '../../services/email/email.service';
 import { UserController } from './user.controller';
 
 /** Database Imports */
@@ -31,7 +32,13 @@ import { jwtConstants } from './auth/constants';
     ]),
   ],
   controllers: [UserController],
-  providers: [UsersService, AuthService, LocalStrategy, JwtStrategy],
-  exports: [UsersService, AuthService],
+  providers: [
+    UsersService,
+    EmailService,
+    AuthService,
+    LocalStrategy,
+    JwtStrategy,
+  ],
+  exports: [UsersService, EmailService, AuthService],
 })
 export class UsersModule {}
