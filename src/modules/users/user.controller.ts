@@ -11,6 +11,7 @@ import { AuthService } from './auth/auth.service';
 import { LoginUserDTO, RegisterUserDTO } from '../../models';
 import { UsersService } from './users.service';
 import { encrypt } from '../../utils/security';
+import { getRandomString } from '../../utils/string';
 
 @Controller()
 export class UserController {
@@ -47,8 +48,9 @@ export class UserController {
   }
 
   @Post('register')
-  async register(@Body() body: RegisterUserDTO) {
-    body.password = encrypt(body.password);
-    return await this.usersService.create(body);
+  async register(@Body() user: RegisterUserDTO) {
+    user.password = encrypt(user.password);
+    user.emailToken = getRandomString();
+    return await this.usersService.create(user);
   }
 }
