@@ -11,12 +11,12 @@ import { UsersModule } from './users/users.module';
     UsersModule,
   ],
   /**
-   * Try not import any controller in the main module
+   * Try NOT import any controller in the main module
    * Each module has their separate controllers
    */
   controllers: [],
   /**
-   * Try not import any provider in the main module
+   * Try NOT import any provider in the main module
    * Each module has their separate providers
    */
   providers: [],

@@ -5,7 +5,8 @@ export const imageFieldName = 'image';
 
 export const storage = diskStorage({
   destination: './uploads',
-  filename: (request, file, callback) => {
+  // tslint:disable-next-line: variable-name
+  filename: (_request, file, callback) => {
     callback(null, generateFilename(file));
   },
 });
