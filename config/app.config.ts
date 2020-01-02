@@ -5,12 +5,7 @@ export const config = {
   version: 'v1',
   // TODO enable mock response only in dev environment
   enableMockResponse: true,
-
-  // TODO fill this up
-  host: {
-    url: 'http://localhost/',
-    port: '3000',
-  },
+  hostURL: 'http://localhost:3000',
 
   mail: {
     host: 'smtp.sendgrid.net',
