@@ -65,7 +65,7 @@ export class UserController {
   test() {
     const emailToken = 'dfdfa';
     const mailOptions = {
-      from: `"Company" <${config.mail.username}>`,
+      from: `"Company" <${config.emailProvider.username}>`,
       to: `joshinechar@gmail.com`, // list of receivers (separated by ,)
       subject: `hello`,
       text: `Testing`,

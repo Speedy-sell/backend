@@ -7,8 +7,8 @@ export const config = {
   enableMockResponse: true,
   hostURL: 'http://localhost:3000',
 
-  mail: {
-    host: 'smtp.sendgrid.net',
+  emailProvider: {
+    hostURL: 'smtp.sendgrid.net',
     port: '587',
     secure: false,
     username: 'apikey',

@@ -8,12 +8,12 @@ export class EmailService {
 
   constructor() {
     this.transporter = nodemailer.createTransport({
-      host: config.mail.host,
-      port: config.mail.port,
-      secure: config.mail.secure, // true for 465, false for other ports
+      host: config.emailProvider.hostURL,
+      port: config.emailProvider.port,
+      secure: config.emailProvider.secure, // true for 465, false for other ports
       auth: {
-        user: config.mail.username,
-        pass: config.mail.password,
+        user: config.emailProvider.username,
+        pass: config.emailProvider.password,
       },
     });
   }
