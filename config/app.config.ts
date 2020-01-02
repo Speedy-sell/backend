@@ -13,10 +13,11 @@ export const config = {
   },
 
   mail: {
-    host: 'smtp.mailgun.org',
+    host: 'smtp.sendgrid.net',
     port: '587',
     secure: false,
-    username: 'postmaster@sandbox5e0457d4047e4698aa98165836e992d4.mailgun.org',
-    password: '5c58883b63a45efa1a7f8b4bc51050ce-6f4beb0a-cde8e898',
+    username: 'apikey',
+    password:
+      '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',
   },
 };
