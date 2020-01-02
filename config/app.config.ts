@@ -12,6 +12,7 @@ export const config = {
     port: '587',
     secure: false,
     username: 'apikey',
+    // TODO move the password to the environment
     password:
       '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',
   },
