@@ -10,7 +10,8 @@
     "nrwl.angular-console",
     "msjsdiag.debugger-for-chrome",
     "streetsidesoftware.code-spell-checker",
-    "eamodio.gitlens"
+    "eamodio.gitlens",
+    "wix.vscode-import-cost"
   ],
   // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
   "unwantedRecommendations": []
