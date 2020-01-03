@@ -38,3 +38,6 @@ config/google-cloud-vision.json
 
 #uploads
 uploads/*
+
+# Environemnt
+environment.ts

@@ -14,6 +14,7 @@ import { EmailService } from '../../services/email/email.service';
 import { encrypt } from '../../utils/security';
 import { getRandomString } from '../../utils/string';
 import { config } from '../../../config/app.config';
+import { environment } from '../../../environment';
 
 @Controller()
 export class UserController {
@@ -65,7 +66,7 @@ export class UserController {
   test() {
     const emailToken = 'dfdfa';
     const mailOptions = {
-      from: `"Company" <${config.emailProvider.username}>`,
+      from: `"Company" <${environment.emailProvider.username}>`,
       to: `joshinechar@gmail.com`, // list of receivers (separated by ,)
       subject: `hello`,
       text: `Testing`,
