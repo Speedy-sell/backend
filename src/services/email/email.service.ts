@@ -1,4 +1,4 @@
-import { environment } from '../../../environment';
+import { config } from '../../../config/app.config';
 import { Injectable } from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
 
@@ -8,12 +8,12 @@ export class EmailService {
 
   constructor() {
     this.transporter = nodemailer.createTransport({
-      host: environment.emailProvider.hostURL,
-      port: environment.emailProvider.port,
-      secure: environment.emailProvider.secure, // true for 465, false for other ports
+      host: config.emailProvider.hostURL,
+      port: config.emailProvider.port,
+      secure: config.emailProvider.secure, // true for 465, false for other ports
       auth: {
-        user: environment.emailProvider.username,
-        pass: environment.emailProvider.password,
+        user: config.emailProvider.username,
+        pass: config.emailProvider.password,
       },
     });
   }

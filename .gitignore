@@ -40,4 +40,4 @@ config/google-cloud-vision.json
 uploads/*
 
 # Environemnt
-environment.ts
+.env
