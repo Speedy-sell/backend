@@ -71,7 +71,7 @@ export class UserController {
       text: `Testing`,
       html:
         `Hi! <br><br> This is a test<br><br>` +
-        `<a href=${config.hostURL}/${emailToken}>` +
+        `<a href=${config.hostURL}/verify/${emailToken}>` +
         `Click here now` +
         `</a>`,
       // html body
