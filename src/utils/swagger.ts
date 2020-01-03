@@ -24,6 +24,7 @@ export class Swagger {
       `API Documentation is running on:`,
       consoleColorCode.cyan,
       `http://localhost:${config.portNumber}/${this.docURL}`,
+      consoleColorCode.reset,
     );
   }
 }
