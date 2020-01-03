@@ -11,8 +11,7 @@ import { AuthService } from './auth/auth.service';
 import { LoginUserDTO, RegisterUserDTO, User } from '../../models';
 import { UsersService } from './users.service';
 import { EmailService } from '../../services/email/email.service';
-import { encrypt } from '../../utils/security';
-import { getRandomString } from '../../utils/string';
+import { encrypt, getRandomString } from '../../utils';
 import { config } from '../../../config/app.config';
 
 @Controller()

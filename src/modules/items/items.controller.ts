@@ -16,7 +16,7 @@ import {
 } from '../../models';
 import { ApiTags, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { storage, imageFieldName } from '../../utils/image-upload';
+import { storage, imageFieldName } from '../../utils';
 import { ImageRecognitionService } from '../../services/image-recognition/image-recognition.service';
 
 @ApiTags('Items')
