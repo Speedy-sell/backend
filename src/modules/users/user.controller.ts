@@ -42,8 +42,8 @@ export class UserController {
     const user: User = {
       ...body,
       emailToken,
-      password: encrypt(body.password),
       verified: false,
+      password: encrypt(body.password),
     };
     this.emailService.sendEmailVerification(emailToken);
     return await this.usersService.create(user);
