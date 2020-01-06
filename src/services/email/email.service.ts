@@ -11,7 +11,7 @@ export class EmailService {
       subject: `Account Verification`,
       html:
         `Hi! <br><br> Please click ` +
-        `<a href=${config.hostURL}/verify/${emailToken}>this link</a>` +
+        `<a href=${config.hostURL}/auth/verify/${emailToken}>this link</a>` +
         ` to activate your account. `,
     };
 
