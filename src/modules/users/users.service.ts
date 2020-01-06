@@ -25,20 +25,20 @@ export class UsersService {
   }
 
   async verify(emailToken: string): Promise<boolean> {
-    const user = await this.userModel.findOne({ emailToken });
-    if (user) {
-      try {
-        await this.userModel.update(
-          { _id: user.id },
-          {
-            verified: true,
-            emailToken: null,
-          },
-        );
+    try {
+      const user = await this.userModel.updateOne(
+        { emailToken },
+        {
+          verified: true,
+          emailToken: null,
+        },
+      );
+      // number of modified
+      if (user.nModified) {
         return true;
-      } catch {
-        return false;
       }
+    } catch {
+      return false;
     }
     return false;
   }
