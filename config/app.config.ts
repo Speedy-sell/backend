@@ -1,7 +1,7 @@
-if (!process.env.SENDGRID_PASSWORD) {
+if (!process.env.EMAIL_PROVIDER_PASSWORD) {
   // tslint:disable-next-line: no-console
   console.warn(
-    `WARNING: Unable to find SENDGRID_PASSWORD. Your email might not work as expected`,
+    `WARNING: Unable to find EMAIL_PROVIDER_PASSWORD. Your email might not work as expected`,
   );
 }
 export const config = {
@@ -16,6 +16,6 @@ export const config = {
     port: '587',
     secure: false, // true for 465, false for other ports
     username: 'apikey',
-    password: process.env.SENDGRID_PASSWORD || 'undefined',
+    password: process.env.EMAIL_PROVIDER_PASSWORD || 'undefined',
   },
 };
