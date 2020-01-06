@@ -36,8 +36,31 @@ export class UserController {
     return this.authService.login(user);
   }
 
+  @Post('auth/register')
+  async register(@Body() body: RegisterUserDTO) {
+    const emailToken = getRandomString();
+    const user: User = {
+      ...body,
+      emailToken,
+      password: encrypt(body.password),
+      verified: false,
+    };
+    this.emailService.sendEmailVerification(emailToken);
+    return await this.usersService.create(user);
+  }
+
+  @Get('auth/verify/:emailToken')
+  async getProduct(@Param('emailToken') emailToken) {
+    const verified = await this.usersService.verify(emailToken);
+    if (verified) {
+      return 'Redirect to successful page';
+    } else {
+      return 'Redirect to un-successful page';
+    }
+  }
+
   @UseGuards(AuthGuard('jwt'))
-  @Get('profile')
+  @Get('getCurrentUser')
   getProfile(@Request() req) {
     const { user } = req;
     /**
@@ -47,28 +70,6 @@ export class UserController {
      * returns the associated `user` information into `req.user` property.
      */
     return user;
-  }
-
-  @Post('register')
-  async register(@Body() body: RegisterUserDTO) {
-    const emailToken = getRandomString();
-    const user: User = {
-      ...body,
-      emailToken,
-      password: encrypt(body.password),
-      verified: false,
-    };
-    return await this.usersService.create(user);
-  }
-
-  @Get('verify/:emailToken')
-  async getProduct(@Param('emailToken') emailToken) {
-    const verified = await this.usersService.verify(emailToken);
-    if (verified) {
-      return 'Redirect to successful page';
-    } else {
-      return 'Redirect to un-successful page';
-    }
   }
 
   @Get('test')
