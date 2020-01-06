@@ -28,6 +28,7 @@ export class UsersService {
     const user = await this.userModel.findOne({ emailToken });
     if (user) {
       user.verified = true;
+      user.emailToken = null;
       user.update();
       return true;
     }
