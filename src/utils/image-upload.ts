@@ -12,6 +12,6 @@ export const storage = diskStorage({
   },
 });
 
-function generateFilename(file) {
+function generateFilename(file): string {
   return `${Date.now()}-${getRandomString() + extname(file.originalname)}`;
 }
