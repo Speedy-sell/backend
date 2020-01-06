@@ -9,7 +9,7 @@ export const config = {
   emailProvider: {
     hostURL: 'smtp.sendgrid.net',
     port: '587',
-    secure: false,
+    secure: false, // true for 465, false for other ports
     username: 'apikey',
     password: process.env.SEND_GRID_PASSWORD || 'undefined',
   },
