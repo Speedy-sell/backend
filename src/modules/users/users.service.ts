@@ -23,4 +23,9 @@ export class UsersService {
       return error;
     }
   }
+
+  async verify(emailToken: string): Promise<boolean> {
+    const user = await this.userModel.findOne({ emailToken });
+    return user ? true : false;
+  }
 }

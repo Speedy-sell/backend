@@ -5,6 +5,7 @@ import {
   Post,
   UseGuards,
   Body,
+  Param,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth/auth.service';
@@ -12,7 +13,6 @@ import { LoginUserDTO, RegisterUserDTO, User } from '../../models';
 import { UsersService } from './users.service';
 import { EmailService } from '../../services/email/email.service';
 import { encrypt, getRandomString } from '../../utils';
-import { config } from '../../../config/app.config';
 
 @Controller()
 export class UserController {
@@ -59,6 +59,17 @@ export class UserController {
       verified: false,
     };
     return await this.usersService.create(user);
+  }
+
+  @Get('verify/:emailToken')
+  async getProduct(@Param('emailToken') emailToken) {
+    const result = await this.usersService.verify(emailToken);
+    if (result) {
+      console.log('Redirect to successful page');
+    } else {
+      console.log('Redirect to un-successful page');
+    }
+    return result;
   }
 
   @Get('test')
