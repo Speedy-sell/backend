@@ -51,10 +51,11 @@ export class UserController {
 
   @Post('register')
   async register(@Body() body: RegisterUserDTO) {
+    const emailToken = getRandomString();
     const user: User = {
       ...body,
+      emailToken,
       password: encrypt(body.password),
-      emailToken: getRandomString(),
       verified: false,
     };
     return await this.usersService.create(user);
@@ -62,21 +63,8 @@ export class UserController {
 
   @Get('test')
   test() {
-    const emailToken = 'dfdfa';
-    const mailOptions = {
-      from: `"Company" <${config.emailProvider.username}>`,
-      to: `joshinechar@gmail.com`, // list of receivers (separated by ,)
-      subject: `hello`,
-      text: `Testing`,
-      html:
-        `Hi! <br><br> This is a test<br><br>` +
-        `<a href=${config.hostURL}/verify/${emailToken}>` +
-        `Click here now` +
-        `</a>`,
-      // html body
-    };
-
-    this.emailService.sendEmailVerification(mailOptions);
-    return 'success again 6';
+    const emailToken = getRandomString();
+    this.emailService.sendEmailVerification(emailToken);
+    return 'Delete this api please';
   }
 }

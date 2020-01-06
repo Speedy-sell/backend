@@ -18,7 +18,19 @@ export class EmailService {
     });
   }
 
-  async sendEmailVerification(mailOptions): Promise<boolean> {
+  async sendEmailVerification(emailToken): Promise<boolean> {
+    const mailOptions = {
+      // TODO check this one
+      from: `"Speedy Sell" <${config.emailProvider.username}>`,
+      to: `joshinechar@gmail.com`, // list of receivers (separated by ,)
+      subject: `hello`,
+      text: `Testing`,
+      html:
+        `Hi! <br><br> Please click` +
+        `<a href=${config.hostURL}/verify/${emailToken}>this link</a>` +
+        `to activate your account. `,
+    };
+
     const sent = await new Promise<boolean>(async (resolve, reject) => {
       return await this.transporter.sendMail(
         mailOptions,
