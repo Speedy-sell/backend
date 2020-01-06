@@ -63,13 +63,12 @@ export class UserController {
 
   @Get('verify/:emailToken')
   async getProduct(@Param('emailToken') emailToken) {
-    const result = await this.usersService.verify(emailToken);
-    if (result) {
-      console.log('Redirect to successful page');
+    const verified = await this.usersService.verify(emailToken);
+    if (verified) {
+      return 'Redirect to successful page';
     } else {
-      console.log('Redirect to un-successful page');
+      return 'Redirect to un-successful page';
     }
-    return result;
   }
 
   @Get('test')

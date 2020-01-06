@@ -11,7 +11,7 @@ export class UsersService {
     private readonly userModel: Model<User>,
   ) {}
 
-  async findOne(email: string): Promise<User | undefined> {
+  async findUser(email: string): Promise<User | undefined> {
     return await this.userModel.findOne({ email });
   }
 
@@ -26,6 +26,11 @@ export class UsersService {
 
   async verify(emailToken: string): Promise<boolean> {
     const user = await this.userModel.findOne({ emailToken });
-    return user ? true : false;
+    if (user) {
+      user.verified = true;
+      user.update();
+      return true;
+    }
+    return false;
   }
 }
