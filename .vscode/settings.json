@@ -8,6 +8,7 @@
     "fieldname",
     "mimetype",
     "nestjs",
-    "originalname"
+    "originalname",
+    "sendgrid"
   ]
 }
