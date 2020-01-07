@@ -13,7 +13,9 @@ import { LoginUserDTO, RegisterUserDTO, User } from '../../models';
 import { UsersService } from './users.service';
 import { EmailService } from '../../services/email/email.service';
 import { encrypt, getRandomString } from '../../utils';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('User')
 @Controller()
 export class UserController {
   constructor(
