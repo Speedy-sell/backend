@@ -1,6 +1,6 @@
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { config } from '../../config/app.config';
-import { consoleColorCode } from './console-color-code';
+import { fancyLog } from './fancy-log';
 
 export class Swagger {
   public docURL = ''; // Eg: `docs`
@@ -18,13 +18,9 @@ export class Swagger {
   }
 
   log() {
-    // tslint:disable-next-line: no-console
-    console.log(
-      consoleColorCode.blue,
+    fancyLog(
       `API Documentation is running on:`,
-      consoleColorCode.cyan,
       `http://localhost:${config.portNumber}/${this.docURL}`,
-      consoleColorCode.reset,
     );
   }
 }

@@ -2,12 +2,12 @@
 
 import { config } from '../../../config/app.config';
 import { Injectable } from '@nestjs/common';
-import { transporter } from '../../../config/email.config';
+import { emailConfig } from '../../../config/email.config';
 
 @Injectable()
 export class EmailService {
   private sendEmail(mailOptions) {
-    transporter.sendMail(mailOptions, (error, info) => {
+    emailConfig.transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.log(`Unable to send: `, error);
       } else if (info) {
