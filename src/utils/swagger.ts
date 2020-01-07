@@ -1,6 +1,6 @@
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { config } from '../../config/app.config';
-import { fancyLog } from './fancy-log';
+import { fancyLog } from './fancy-console';
 
 export class Swagger {
   public docURL = ''; // Eg: `docs`
