@@ -10,8 +10,9 @@ export class EmailService {
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.log(`Unable to send: `, error);
+      } else if (info) {
+        console.log(`Message sent: %s`, info.messageId);
       }
-      console.log(`Message sent: %s`, info.messageId);
     });
   }
 
