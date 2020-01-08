@@ -17,6 +17,9 @@ export class EmailService {
   }
 
   async sendEmailVerification(emailToken) {
+    if (config.disableEmail) {
+      return;
+    }
     this.sendEmail({
       from: `"No-Reply" <no-reply@yourDomain.com>`,
       to: `joshinechar@gmail.com`,
