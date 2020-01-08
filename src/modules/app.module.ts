@@ -12,7 +12,7 @@ import { UsersModule } from './users/users.module';
   ],
   /**
    * Try NOT import any controller in the main module
-   * Each module has their separate controllers
+   * Each module has their separate controllers.
    */
   controllers: [],
   /**
