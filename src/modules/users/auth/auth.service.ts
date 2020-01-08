@@ -26,11 +26,11 @@ export class AuthService {
     return remaining;
   }
 
-  async login(user: User) {
+  async generateAccessToken(user: User) {
     const accessToken = {
       access_token: this.jwtService.sign({
         email: user.email,
-        sub: user.userId,
+        sub: user._id,
       }),
     };
     return accessToken;

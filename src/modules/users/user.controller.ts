@@ -28,14 +28,14 @@ export class UserController {
   @Post('auth/login')
   // tslint:disable-next-line: variable-name
   async login(@Request() req, @Body() _body: LoginUserDTO) {
-    const { user } = req;
+    const user = req.user._doc;
     /**
      * Where did the property `user` come from?
      * Thanks to the decorator `@UseGuard(AuthGuard('local'))`
      * The middleware validates the `username` and `password` then
      * returns the associated `user` information into `req.user` property.
      */
-    return this.authService.login(user);
+    return this.authService.generateAccessToken(user);
   }
 
   @Post('auth/register')
@@ -48,7 +48,12 @@ export class UserController {
       password: encrypt(body.password),
     };
     this.emailService.sendEmailVerification(emailToken);
-    return await this.usersService.create(user);
+    const response = await this.usersService.create(user);
+    if (response && response._id && response.email) {
+      const token = await this.authService.generateAccessToken(response);
+      return token;
+    }
+    return response;
   }
 
   @Get('auth/verify/:emailToken')
