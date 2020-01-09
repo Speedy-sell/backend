@@ -9,7 +9,12 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth/auth.service';
-import { LoginUserDTO, RegisterUserDTO, User } from '../../models';
+import {
+  LoginUserDTO,
+  RegisterUserDTO,
+  User,
+  ResetPasswordDTO,
+} from '../../models';
 import { UsersService } from './users.service';
 import { EmailService } from '../../services/email/email.service';
 import { encrypt, getRandomString } from '../../utils';
@@ -80,10 +85,11 @@ export class UserController {
     return user;
   }
 
-  @Get('test')
-  test() {
+  @Get('auth/password-reset')
+  async passwordReset(@Body() body: ResetPasswordDTO) {
     const emailToken = getRandomString();
+    const user: User = await this.usersService.findUserByEmail(body.email);
+    user.emailToken = emailToken;
     this.emailService.sendEmailVerification(emailToken);
-    return 'Delete this api please';
   }
 }
