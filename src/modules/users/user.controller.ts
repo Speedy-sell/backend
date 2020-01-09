@@ -88,8 +88,11 @@ export class UserController {
   @Get('auth/password-reset')
   async passwordReset(@Body() body: ResetPasswordDTO) {
     const emailToken = getRandomString();
-    const user: User = await this.usersService.findUserByEmail(body.email);
-    user.emailToken = emailToken;
-    this.emailService.sendEmailVerification(emailToken);
+    if (await this.usersService.setEmailToken(body.email, emailToken)) {
+      this.emailService.sendEmailVerification(emailToken);
+      return 'Email Sent';
+    } else {
+      return 'Unable to find the user';
+    }
   }
 }
