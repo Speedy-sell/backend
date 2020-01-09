@@ -52,7 +52,7 @@ export class UserController {
       verified: false,
       password: encrypt(body.password),
     };
-    this.emailService.sendEmailVerification(emailToken);
+    this.emailService.sendEmailVerification(body.email, emailToken);
     try {
       const response = await this.usersService.create(user);
       const token = this.authService.generateAccessToken(response);
@@ -89,7 +89,7 @@ export class UserController {
   async passwordReset(@Body() body: ResetPasswordDTO) {
     const emailToken = getRandomString();
     if (await this.usersService.setEmailToken(body.email, emailToken)) {
-      this.emailService.sendEmailVerification(emailToken);
+      this.emailService.sendEmailVerification(body.email, emailToken);
       return 'Email Sent';
     } else {
       return 'Unable to find the user';

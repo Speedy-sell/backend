@@ -6,7 +6,12 @@ import { emailConfig } from '../../../config/email.config';
 
 @Injectable()
 export class EmailService {
+  defaultSender = `"No-Reply" <no-reply@yourDomain.com>`;
+
   private sendEmail(mailOptions) {
+    if (config.disableEmail) {
+      return;
+    }
     emailConfig.transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.log(`Unable to send: `, error);
@@ -16,13 +21,10 @@ export class EmailService {
     });
   }
 
-  async sendEmailVerification(emailToken) {
-    if (config.disableEmail) {
-      return;
-    }
+  sendEmailVerification(recipientEmailAddress, emailToken) {
     this.sendEmail({
-      from: `"No-Reply" <no-reply@yourDomain.com>`,
-      to: `joshinechar@gmail.com`,
+      from: this.defaultSender,
+      to: recipientEmailAddress,
       subject: `Account Verification`,
       html:
         `Hi! <br><br> Please click ` +
