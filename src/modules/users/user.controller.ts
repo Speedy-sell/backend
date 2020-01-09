@@ -48,12 +48,13 @@ export class UserController {
       password: encrypt(body.password),
     };
     this.emailService.sendEmailVerification(emailToken);
-    const response = await this.usersService.create(user);
-    if (response && response._id && response.email) {
+    try {
+      const response = await this.usersService.create(user);
       const token = this.authService.generateAccessToken(response);
       return token;
+    } catch (error) {
+      return error;
     }
-    return response;
   }
 
   @Get('auth/verify/:emailToken')

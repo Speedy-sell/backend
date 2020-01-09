@@ -16,12 +16,8 @@ export class UsersService {
   }
 
   async create(user: RegisterUserDTO) {
-    try {
-      const newUser = new this.userModel(user);
-      return await newUser.save();
-    } catch (error) {
-      return error;
-    }
+    const newUser = new this.userModel(user);
+    return await newUser.save();
   }
 
   async verify(emailToken: string): Promise<boolean> {
