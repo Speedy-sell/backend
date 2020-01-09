@@ -50,7 +50,7 @@ export class UserController {
     this.emailService.sendEmailVerification(emailToken);
     const response = await this.usersService.create(user);
     if (response && response._id && response.email) {
-      const token = await this.authService.generateAccessToken(response);
+      const token = this.authService.generateAccessToken(response);
       return token;
     }
     return response;
