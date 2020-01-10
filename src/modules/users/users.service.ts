@@ -20,13 +20,8 @@ export class UsersService {
     return await newUser.save();
   }
 
-  async setEmailToken(email, token) {
-    const user = await this.userModel.updateOne(
-      { email },
-      {
-        emailToken: token,
-      },
-    );
+  async setEmailToken(email, emailToken) {
+    const user = await this.userModel.updateOne({ email }, { emailToken });
     return this.wasUpdatedOrNot(user);
   }
 
