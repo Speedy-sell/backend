@@ -1,12 +1,10 @@
-import { Document } from 'mongoose';
-
-export interface Item extends Document {
+export interface Item {
   itemCode: string;
   name: string;
   qty: number;
   rate: number;
 }
-export interface ImageProperties extends Document {
+export interface ImageProperties {
   fieldname: string;
   originalname: string;
   encoding: string;
