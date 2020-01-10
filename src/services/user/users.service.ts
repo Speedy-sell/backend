@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { User, ResetPasswordDTO } from '../../models';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { mongoDBConfig } from '../../../config/mongodb.config';
+import { mongoDBConfig } from '../../../config';
 
 @Injectable()
 export class UsersService {

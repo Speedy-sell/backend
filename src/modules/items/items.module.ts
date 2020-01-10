@@ -3,7 +3,7 @@ import { ItemsController } from './items.controller';
 import { ItemsService, ImageRecognitionService } from '../../services';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ItemSchema } from '../../models';
-import { mongoDBConfig } from '../../../config/mongodb.config';
+import { mongoDBConfig } from '../../../config';
 
 @Module({
   imports: [

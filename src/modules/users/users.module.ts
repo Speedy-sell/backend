@@ -5,7 +5,7 @@ import { UserController } from './user.controller';
 /** Database Imports */
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserSchema } from '../../models';
-import { mongoDBConfig } from '../../../config/mongodb.config';
+import { mongoDBConfig } from '../../../config';
 
 /** Authentication Imports */
 import { LocalStrategy } from './auth/strategies/local.strategy';

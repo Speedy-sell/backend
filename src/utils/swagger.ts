@@ -1,5 +1,5 @@
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { config } from '../../config/app.config';
+import { config } from '../../config';
 import { logInfo } from './fancy-console';
 
 export class Swagger {

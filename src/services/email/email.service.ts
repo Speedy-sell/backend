@@ -1,8 +1,7 @@
 // tslint:disable: no-console
 
-import { config } from '../../../config/app.config';
+import { config, emailConfig } from '../../../config';
 import { Injectable } from '@nestjs/common';
-import { emailConfig } from '../../../config/email.config';
 
 @Injectable()
 export class EmailService {
