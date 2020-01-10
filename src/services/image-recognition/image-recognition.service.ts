@@ -17,13 +17,11 @@ export class ImageRecognitionService {
   async getTags(imagePath) {
     /** Mock response */
     if (config.enableMockResponse) {
-      return [
-        'Furniture',
-        'Electronic',
-        'Toys',
-        'Food',
-        'This is a mock response, please set `enableMockResponse` to `false` in the config file to disable',
-      ];
+      // tslint:disable-next-line: no-console
+      console.log(
+        'Mock Response Sent. To disable, set `enableMockResponse` to `false` in the config file ',
+      );
+      return ['Furniture', 'Electronic', 'Toys', 'Food', 'Mock', 'Response'];
     }
     /** Real response */
     try {
