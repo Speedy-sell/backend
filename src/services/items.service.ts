@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Item, CreateItemDTO } from '../../models';
-import { mongoDBConfig } from '../../../config/mongodb.config';
+import { Item, CreateItemDTO } from '../models';
+import { mongoDBConfig } from '../../config/mongodb.config';
 
 @Injectable()
 export class ItemsService {

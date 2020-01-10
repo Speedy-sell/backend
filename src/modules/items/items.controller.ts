@@ -7,7 +7,7 @@ import {
   UploadedFile,
   Put,
 } from '@nestjs/common';
-import { ItemsService } from './items.service';
+import { ItemsService } from '../../services/items.service';
 import {
   CreateItemDTO,
   ImageProperties,
