@@ -8,7 +8,7 @@ import {
   Param,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from '../../services/auth.service';
 import {
   User,
   LoginUserDTO,
