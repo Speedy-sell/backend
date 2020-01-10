@@ -13,6 +13,7 @@ import {
   LoginUserDTO,
   RegisterUserDTO,
   User,
+  ForgotPasswordDTO,
   ResetPasswordDTO,
 } from '../../models';
 import { UsersService } from './users.service';
@@ -85,8 +86,8 @@ export class UserController {
     return user;
   }
 
-  @Get('auth/password-reset')
-  async passwordReset(@Body() body: ResetPasswordDTO) {
+  @Post('auth/forgot-password')
+  async forgotPassword(@Body() body: ForgotPasswordDTO) {
     const emailToken = getRandomString();
     if (await this.usersService.setEmailToken(body.email, emailToken)) {
       this.emailService.sendEmailVerification(body.email, emailToken);
@@ -94,5 +95,11 @@ export class UserController {
     } else {
       return 'Unable to find the user';
     }
+  }
+
+  @Post('auth/reset-password')
+  async resetPassword(@Body() resetPasswordDTO: ResetPasswordDTO) {
+    resetPasswordDTO.password = encrypt(resetPasswordDTO.password);
+    return await this.usersService.resetPassword(resetPasswordDTO);
   }
 }

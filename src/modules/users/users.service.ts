@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { User } from '../../models';
+import { User, ResetPasswordDTO } from '../../models';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { mongoDBConfig } from '../../../config/mongodb.config';
@@ -36,6 +36,20 @@ export class UsersService {
       {
         verified: true,
         emailToken: null,
+      },
+    );
+    return this.wasUpdatedOrNot(user);
+  }
+
+  async resetPassword({
+    email,
+    emailToken,
+    password,
+  }: ResetPasswordDTO): Promise<boolean> {
+    const user = await this.userModel.updateOne(
+      { email, emailToken },
+      {
+        password,
       },
     );
     return this.wasUpdatedOrNot(user);

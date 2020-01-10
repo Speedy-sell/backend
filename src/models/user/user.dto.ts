@@ -8,8 +8,14 @@ export class RegisterUserDTO implements Partial<User> {
   @ApiProperty() password: string;
 }
 
+export class ForgotPasswordDTO implements Partial<User> {
+  @ApiProperty() email: string;
+}
+
 export class ResetPasswordDTO implements Partial<User> {
   @ApiProperty() email: string;
+  @ApiProperty() emailToken: string;
+  @ApiProperty({ description: 'New Password' }) password: string;
 }
 
 export class LoginUserDTO implements Partial<User> {
