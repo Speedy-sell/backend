@@ -10,9 +10,9 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth/auth.service';
 import {
+  User,
   LoginUserDTO,
   RegisterUserDTO,
-  User,
   ForgotPasswordDTO,
   ResetPasswordDTO,
 } from '../../models';
