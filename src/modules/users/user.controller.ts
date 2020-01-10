@@ -8,7 +8,7 @@ import {
   Param,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { AuthService } from '../../services/auth.service';
+import { AuthService, EmailService, UsersService } from '../../services';
 import {
   User,
   LoginUserDTO,
@@ -16,8 +16,6 @@ import {
   ForgotPasswordDTO,
   ResetPasswordDTO,
 } from '../../models';
-import { UsersService } from '../../services/users.service';
-import { EmailService } from '../../services/email/email.service';
 import { encrypt, getRandomString } from '../../utils';
 import { ApiTags } from '@nestjs/swagger';
 

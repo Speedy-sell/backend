@@ -7,7 +7,7 @@ import {
   UploadedFile,
   Put,
 } from '@nestjs/common';
-import { ItemsService } from '../../services/items.service';
+import { ItemsService, ImageRecognitionService } from '../../services';
 import {
   CreateItemDTO,
   ImageProperties,
@@ -17,7 +17,6 @@ import {
 import { ApiTags, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { storage, imageFieldName } from '../../utils';
-import { ImageRecognitionService } from '../../services/image-recognition/image-recognition.service';
 
 @ApiTags('Items')
 @Controller()

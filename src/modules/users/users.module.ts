@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
-import { UsersService } from '../../services/users.service';
-import { EmailService } from '../../services/email/email.service';
+import { UsersService, AuthService, EmailService } from '../../services';
 import { UserController } from './user.controller';
 
 /** Database Imports */
@@ -9,7 +8,6 @@ import { UserSchema } from '../../models';
 import { mongoDBConfig } from '../../../config/mongodb.config';
 
 /** Authentication Imports */
-import { AuthService } from '../../services/auth.service';
 import { LocalStrategy } from './auth/strategies/local.strategy';
 import { JwtStrategy } from './auth/strategies/jwt.strategy';
 import { PassportModule } from '@nestjs/passport';

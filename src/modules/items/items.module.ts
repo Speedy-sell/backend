@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ItemsController } from './items.controller';
-import { ItemsService } from '../../services/items.service';
+import { ItemsService, ImageRecognitionService } from '../../services';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ItemSchema } from '../../models';
-import { ImageRecognitionService } from '../../services/image-recognition/image-recognition.service';
 import { mongoDBConfig } from '../../../config/mongodb.config';
 
 @Module({
