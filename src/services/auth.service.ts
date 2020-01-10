@@ -12,18 +12,12 @@ export class AuthService {
   ) {}
 
   async validateUser(email: string, pass: string): Promise<any> {
-    let user = await this.usersService.findUserByEmail(email);
+    const user = await this.usersService.findUserByEmail(email);
 
     if (user && bcrypt.compareSync(pass, user.password)) {
-      user = this.removePasswordProperty(user);
       return user;
     }
     return null;
-  }
-
-  private removePasswordProperty(user) {
-    const { password, ...remaining } = user;
-    return remaining;
   }
 
   generateAccessToken(user: User) {
