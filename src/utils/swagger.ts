@@ -1,6 +1,6 @@
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { config } from '../../config/app.config';
-import { fancyLog } from './fancy-console';
+import { logInfo } from './fancy-console';
 
 export class Swagger {
   public docURL = ''; // Eg: `docs`
@@ -18,7 +18,7 @@ export class Swagger {
   }
 
   log() {
-    fancyLog(
+    logInfo(
       `API Documentation is running on:`,
       `http://localhost:${config.portNumber}/${this.docURL}`,
     );

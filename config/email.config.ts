@@ -1,5 +1,5 @@
 import * as nodemailer from 'nodemailer';
-import { fancyWarn } from '../src/utils';
+import { logError } from '../src/utils';
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.mailtrap.io',
@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 
 const log = () => {
   if (!process.env.EMAIL_PROVIDER_PASSWORD) {
-    fancyWarn(
+    logError(
       `WARNING:`,
       `Unable to find EMAIL_PROVIDER_PASSWORD. Your email might not work as expected`,
     );
