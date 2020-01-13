@@ -9,7 +9,7 @@ const consoleColorCode = {
 };
 const noSpace = '%s\x1b[0m';
 
-export const logInfo = (blueText, cyanText) => {
+const info = (blueText, cyanText) => {
   console.log(
     consoleColorCode.blue + noSpace,
     blueText,
@@ -19,7 +19,7 @@ export const logInfo = (blueText, cyanText) => {
   );
 };
 
-export const logError = (blueText, cyanText) => {
+const error = (blueText, cyanText) => {
   console.log(
     consoleColorCode.BgRed + noSpace,
     blueText,
@@ -27,4 +27,9 @@ export const logError = (blueText, cyanText) => {
     cyanText,
     consoleColorCode.reset,
   );
+};
+
+export const customLog = {
+  info,
+  error,
 };
