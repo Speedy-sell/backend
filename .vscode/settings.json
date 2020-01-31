@@ -5,10 +5,13 @@
     "statusBar.background": "#220000"
   },
   "cSpell.words": [
+    "Bech",
     "fieldname",
+    "mailtrap",
     "mimetype",
     "nestjs",
     "originalname",
-    "sendgrid"
+    "sendgrid",
+    "smtp"
   ]
 }
